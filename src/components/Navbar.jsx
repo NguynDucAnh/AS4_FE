@@ -28,6 +28,9 @@ const Navbar = () => {
             {user.admin && (
               <>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/admin/users">Quản lý Người dùng</Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/admin/questions">Quản lý Câu hỏi</Link>
                 </li>
                 <li className="nav-item">

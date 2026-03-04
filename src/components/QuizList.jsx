@@ -18,7 +18,7 @@ const QuizList = () => {
     const fetchQuizzes = async () => {
       try {
         // Gắn token vào header để xác thực với Backend AS3
-        const res = await axios.get('https://as3-be-auth.onrender.com/quizzes', {
+        const res = await axios.get('https://as3-be-auth.onrender.com/api/quizzes', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setQuizzes(res.data);

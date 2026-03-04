@@ -21,7 +21,7 @@ const QuestionForm = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`https://as3-be-auth.onrender.com/questions/${id}`)
+      axios.get(`https://as3-be-auth.onrender.com/api/questions/${id}`)
         .then(res => setFormData({
           ...res.data,
           options: res.data.options.join(', ') // Chuyển mảng thành chuỗi để hiện lên input
@@ -39,9 +39,9 @@ const QuestionForm = () => {
 
     try {
       if (id) {
-        await axios.put(`https://as3-be-auth.onrender.com/questions/${id}`, payload, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`https://as3-be-auth.onrender.com/api/questions/${id}`, payload, { headers: { Authorization: `Bearer ${token}` } });
       } else {
-        await axios.post('https://as3-be-auth.onrender.com/questions', payload, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.post('https://as3-be-auth.onrender.com/api/questions', payload, { headers: { Authorization: `Bearer ${token}` } });
       }
       navigate('/admin/questions');
     } catch (err) {

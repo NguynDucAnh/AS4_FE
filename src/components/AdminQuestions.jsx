@@ -19,7 +19,7 @@ const AdminQuestions = () => {
 
   const fetchQuestions = async () => {
     try {
-      const res = await axios.get('https://as3-be-auth.onrender.com/questions');
+      const res = await axios.get('https://as3-be-auth.onrender.com/api/questions');
       setQuestions(res.data || []);
     } catch (err) {
       console.error("Lỗi lấy dữ liệu", err);
@@ -30,7 +30,7 @@ const AdminQuestions = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Bạn có chắc muốn xóa câu hỏi này?")) {
       try {
-        await axios.delete(`https://as3-be-auth.onrender.com/questions/${id}`, {
+        await axios.delete(`https://as3-be-auth.onrender.com/api/questions/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchQuestions(); // Load lại danh sách

@@ -29,7 +29,7 @@ const QuizForm = () => {
     
     // If editing, fetch the quiz data
     if (id) {
-      axios.get(`https://as3-be-auth.onrender.com/quizzes/${id}`)
+      axios.get(`https://as3-be-auth.onrender.com/api/quizzes/${id}`)
         .then(res => setFormData(res.data))
         .catch(err => console.error("Lỗi lấy dữ liệu", err));
     }
@@ -37,7 +37,7 @@ const QuizForm = () => {
 
   const fetchAvailableQuestions = async () => {
     try {
-      const res = await axios.get('https://as3-be-auth.onrender.com/questions');
+      const res = await axios.get('https://as3-be-auth.onrender.com/api/questions');
       setAvailableQuestions(res.data);
     } catch (err) {
       console.error("Lỗi lấy danh sách câu hỏi", err);
@@ -65,11 +65,11 @@ const QuizForm = () => {
     
     try {
       if (id) {
-        await axios.put(`https://as3-be-auth.onrender.com/quizzes/${id}`, formData, {
+        await axios.put(`https://as3-be-auth.onrender.com/api/quizzes/${id}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('https://as3-be-auth.onrender.com/quizzes', formData, {
+        await axios.post('https://as3-be-auth.onrender.com/api/quizzes', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

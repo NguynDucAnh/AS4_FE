@@ -21,7 +21,7 @@ const TakeQuiz = () => {
     // Gọi API lấy chi tiết bài thi
     const fetchQuiz = async () => {
       try {
-        const res = await axios.get(`https://as3-be-auth.onrender.com/quizzes/${id}`, {
+        const res = await axios.get(`https://as3-be-auth.onrender.com/api/quizzes/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setQuiz(res.data);

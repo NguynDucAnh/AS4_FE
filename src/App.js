@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import QuizList from './components/QuizList';
 import TakeQuiz from './components/TakeQuiz';
+import AdminUsers from './components/AdminUsers';
 import AdminQuestions from './components/AdminQuestions';
 import QuestionForm from './components/QuestionForm';
 import AdminQuizzes from './components/AdminQuizzes';
@@ -23,6 +24,8 @@ function App() {
         <Route path="/take-quiz/:id" element={<TakeQuiz />} />
         
         {/* Phía quản trị (CRUD) */}
+        <Route path="/admin/users" element={<AdminUsers />} />
+        
         <Route path="/admin/questions" element={<AdminQuestions />} />
         <Route path="/admin/questions/create" element={<QuestionForm />} />
         <Route path="/admin/questions/edit/:id" element={<QuestionForm />} />
