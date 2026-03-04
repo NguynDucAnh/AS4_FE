@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,16 +10,7 @@ const AdminUsers = () => {
   const { user, token } = useSelector(state => state.auth);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check admin permissions
-    if (!user || !user.admin) {
-      navigate('/quizzes');
-      return;
-    }
-    fetchUsers();
-  }, [user, navigate]);
-
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const res = await axios.get('https://as3-be-auth.onrender.com/api/users', {
         headers: { Authorization: `Bearer ${token}` }
@@ -29,7 +20,16 @@ const AdminUsers = () => {
       console.error("Lỗi lấy dữ liệu", err);
       setUsers([]);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    // Check admin permissions
+    if (!user || !user.admin) {
+      navigate('/quizzes');
+      return;
+    }
+    fetchUsers();
+  }, [user, navigate, fetchUsers]);
 
   const handleEdit = (userData) => {
     setEditingId(userData._id);
