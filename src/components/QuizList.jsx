@@ -38,7 +38,7 @@ const QuizList = () => {
     <div className="container mt-4">
       <div className="d-flex justify-content-between mb-4">
         <h2>Danh sách Quiz</h2>
-        <button className="btn btn-danger" onClick={handleLogout}>Đăng xuất</button>
+        {/* <button className="btn btn-danger" onClick={handleLogout}>Đăng xuất</button> */}
       </div>
       <ul className="list-group">
         {quizzes.map(quiz => (

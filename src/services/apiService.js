@@ -43,13 +43,13 @@ export const authAPI = {
 // Users APIs
 export const userAPI = {
   getAllUsers: () =>
-    axios.get(`${BASE_URL}/api/users`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+    axios.get(`${BASE_URL}/api/auth/users`, { headers: { Authorization: `Bearer ${getToken()}` } }),
   getUser: (userId) =>
-    axios.get(`${BASE_URL}/api/users/${userId}`),
+    axios.get(`${BASE_URL}/api/auth/users/${userId}`),
   updateUser: (userId, updates) =>
-    axios.put(`${BASE_URL}/api/users/${userId}`, updates, { headers: { Authorization: `Bearer ${getToken()}` } }),
+    axios.put(`${BASE_URL}/api/auth/users/${userId}`, updates, { headers: { Authorization: `Bearer ${getToken()}` } }),
   deleteUser: (userId) =>
-    axios.delete(`${BASE_URL}/api/users/${userId}`, { headers: { Authorization: `Bearer ${getToken()}` } }),
+    axios.delete(`${BASE_URL}/api/auth/users/${userId}`, { headers: { Authorization: `Bearer ${getToken()}` } }),
 };
 
 // Questions APIs

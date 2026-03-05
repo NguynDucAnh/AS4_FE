@@ -69,9 +69,9 @@ const AdminQuestions = () => {
                     </ol>
                   </div>
 
-                  <small className="text-muted d-block">
-                    <strong>Tác giả:</strong> {q.author || 'N/A'}
-                  </small>
+                  {/* <small className="text-muted d-block">
+                    <strong>Tác giả:</strong> {q. || 'N/A'}
+                  </small> */}
                   
                   {canEdit && (
                     <div className="mt-3 d-flex gap-2">

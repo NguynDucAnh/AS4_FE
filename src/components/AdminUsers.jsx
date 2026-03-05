@@ -12,7 +12,7 @@ const AdminUsers = () => {
 
   const fetchUsers = useCallback(async () => {
     try {
-      const res = await axios.get('https://as3-be-auth.onrender.com/api/users', {
+      const res = await axios.get('https://as3-be-auth.onrender.com/api/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(res.data || []);
@@ -43,7 +43,7 @@ const AdminUsers = () => {
 
   const handleSaveEdit = async (userId) => {
     try {
-      await axios.put(`https://as3-be-auth.onrender.com/api/users/${userId}`, editData, {
+      await axios.put(`https://as3-be-auth.onrender.com/api/auth/users/${userId}`, editData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchUsers();
@@ -58,7 +58,7 @@ const AdminUsers = () => {
   const handleDelete = async (userId) => {
     if (window.confirm("Bạn có chắc muốn xóa người dùng này?")) {
       try {
-        await axios.delete(`https://as3-be-auth.onrender.com/api/users/${userId}`, {
+        await axios.delete(`https://as3-be-auth.onrender.com/api/auth/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchUsers();
