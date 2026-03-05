@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import Register from './components/Register';
 import QuizList from './components/QuizList';
 import TakeQuiz from './components/TakeQuiz';
 import AdminUsers from './components/AdminUsers';
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         
         {/* Phía người dùng (Làm bài) */}
         <Route path="/quizzes" element={<QuizList />} />

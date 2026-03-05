@@ -1,39 +1,38 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { loginSuccess } from '../store/authSlice';
 import { useNavigate, Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://as3-be-auth.onrender.com/api/auth/login', { username, password });
-      dispatch(loginSuccess({ user: res.data, token: res.data.token }));
-      navigate('/quizzes');
+      // Assuming register endpoint is /api/auth/register as per implementation plan
+      await axios.post('https://as3-be-auth.onrender.com/api/auth/register', { username, password });
+      alert("Đăng ký thành công! Vui lòng đăng nhập.");
+      navigate('/');
     } catch (err) {
-      alert("Sai tài khoản hoặc mật khẩu!");
+      alert("Đăng ký thất bại. Tên đăng nhập có thể đã tồn tại hoặc có lỗi xảy ra.");
     }
   };
 
   return (
     <div className="container mt-5" style={{ maxWidth: '400px' }}>
-      <h2 className="text-center">Đăng nhập</h2>
-      <form onSubmit={handleLogin}>
+      <h2 className="text-center">Đăng ký</h2>
+      <form onSubmit={handleRegister}>
         <input type="text" placeholder="Username" className="form-control mb-3" onChange={e => setUsername(e.target.value)} required />
         <input type="password" placeholder="Password" className="form-control mb-3" onChange={e => setPassword(e.target.value)} required />
-        <button type="submit" className="btn btn-primary w-100">Login</button>
+        <button type="submit" className="btn btn-success w-100">Register</button>
       </form>
       <div className="text-center mt-3">
-        <span>Don't have an account? </span>
-        <Link to="/register">Register</Link>
+        <span>Already have an account? </span>
+        <Link to="/">Login here</Link>
       </div>
     </div>
   );
 };
-export default Login;
+
+export default Register;
