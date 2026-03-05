@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../store/authSlice';
+
 
 const QuizList = () => {
   const [quizzes, setQuizzes] = useState([]);
   const { token } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,11 +29,7 @@ const QuizList = () => {
     fetchQuizzes();
   }, [token, navigate]);
 
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate('/');
-  };
-
+  
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-between mb-4">
